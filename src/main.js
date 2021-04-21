@@ -2,13 +2,25 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import WeatherService from './weather-service.js';
+import WeatherService from './services/weather-service.js';
+import GiphyService from './services/giphy-service';
 
 function clearFields() {
   $('#location').val("");
   $('.showErrors').text("");
-  $('.showHumidity').text("");
-  $('.showTemp').text("");
+}
+
+function displayWeatherDescription(description) {
+  $('.weather-desription').text(`The weather is ${description}!`);
+}
+
+function displayGif(response) {
+  const url = response.data.[0].images.downsized.url;
+  $('.show-gif').html(`<img src='${url}'>`);
+}
+
+function displayErrors(error) {
+  $('.show-errors').text(`${error}`);
 }
 
 function getElements(response) {
