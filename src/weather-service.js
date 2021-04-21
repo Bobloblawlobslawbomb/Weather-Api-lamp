@@ -16,6 +16,7 @@
 //   }
 // }
 
+
 export default class WeatherService {
   static async getWeather(city) {
   try {
